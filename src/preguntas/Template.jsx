@@ -11,11 +11,13 @@ import FormLabel from '@mui/material/FormLabel';
 
 import React from 'react';
 
-export const Tres = () => {
+export const Template = (props) => {
+	const { question, title, op1, op2, op3 } = props;
+
 	const { score, respuestas } = useContext(contexto);
 
 	const handleChange = (event) => {
-		score(event.target.value, 3);
+		score(event.target.value, question);
 	};
 
 	return (
@@ -32,7 +34,7 @@ export const Tres = () => {
 				id="demo-controlled-radio-buttons-group"
 				sx={{ fontSize: '1.2rem' }}
 			>
-				3. Tipo de piel
+				{`${question}.${title}`}
 			</FormLabel>
 			<RadioGroup
 				aria-labelledby="demo-controlled-radio-buttons-group"
@@ -46,21 +48,9 @@ export const Tres = () => {
 					marginLeft: '10px',
 				}}
 			>
-				<FormControlLabel
-					value="a"
-					control={<Radio />}
-					label="Seca, áspera"
-				/>
-				<FormControlLabel
-					value="b"
-					control={<Radio />}
-					label="Suave, aceitosa"
-				/>
-				<FormControlLabel
-					value="c"
-					control={<Radio />}
-					label="Húmeda, aceitosa"
-				/>
+				<FormControlLabel value="a" control={<Radio />} label={op1} />
+				<FormControlLabel value="b" control={<Radio />} label={op2} />
+				<FormControlLabel value="c" control={<Radio />} label={op3} />
 			</RadioGroup>
 		</FormControl>
 	);

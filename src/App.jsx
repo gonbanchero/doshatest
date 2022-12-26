@@ -1,9 +1,8 @@
-import { Uno } from './preguntas';
-import { Dos } from './preguntas';
-import { Tres, Cuatro } from './preguntas';
+import { Template } from './preguntas/Template';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Results } from './components/Results';
+import data from './preguntas/data';
 
 function App() {
 	return (
@@ -11,15 +10,15 @@ function App() {
 			<Box
 				sx={{
 					bgcolor: '#cfe8fc',
-					height: '100vh',
+
 					width: '90%',
-					padding: 1,
+					padding: 2,
 				}}
 			>
-				<Uno />
-				<Dos />
-				<Tres />
-				<Cuatro />
+				{data.map((item) => {
+					return <Template {...item} key={item.question} />;
+				})}
+
 				<Results />
 			</Box>
 		</Container>
@@ -27,5 +26,3 @@ function App() {
 }
 
 export default App;
-
-//
